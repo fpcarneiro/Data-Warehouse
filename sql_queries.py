@@ -145,12 +145,12 @@ where a.page = 'NextSong';
 
 song_table_insert = ("""
 insert into songs(song_id, song_title, artist_id, year, duration) 
-select song_id, title, artist_id, year, duration  from staging_songs;
+select distinct song_id, title, artist_id, year, duration from staging_songs;
 """)
 
 artist_table_insert = ("""
 insert into artists(artist_id, artist_name, location, latitude, longitude) 
-select artist_id, artist_name, artist_location, artist_latitude, artist_longitude  from staging_songs;
+select distinct artist_id, artist_name, artist_location, artist_latitude, artist_longitude  from staging_songs;
 """)
 
 time_table_insert = ("""
